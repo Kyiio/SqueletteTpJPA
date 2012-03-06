@@ -25,7 +25,7 @@ public class DAOModuleJDBC implements DAOModule {
 		return null;
 	}
 
-	public Module getById(int id) {
+	public Module getById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

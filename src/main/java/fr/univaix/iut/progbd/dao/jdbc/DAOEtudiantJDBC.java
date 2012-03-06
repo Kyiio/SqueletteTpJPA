@@ -44,11 +44,6 @@ public class DAOEtudiantJDBC implements DAOEtudiant {
 		return null;
 	}
 
-	public Etudiant getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public Etudiant insert(Etudiant obj) {
 		// TODO Auto-generated method stub
 		return null;
@@ -57,6 +52,12 @@ public class DAOEtudiantJDBC implements DAOEtudiant {
 	public boolean update(Etudiant obj) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Etudiant getById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -45,7 +45,7 @@ public class DAOEtudiantJPA implements DAOEtudiant {
 		return null;
 	}
 
-	public Etudiant getById(int id) {
+	public Etudiant getById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

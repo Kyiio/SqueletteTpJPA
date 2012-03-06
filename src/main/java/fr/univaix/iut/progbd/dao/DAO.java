@@ -2,7 +2,7 @@ package fr.univaix.iut.progbd.dao;
 
 import java.util.List;
 
-public interface DAO<T> {
+public interface DAO<T, ID> {
 
 	/**
 	 * Permet la suppression d'un tuple de la base
@@ -24,7 +24,7 @@ public interface DAO<T> {
 	 * @param id
 	 * @return
 	 */
-	public T getById(int id);
+	public T getById(ID id);
 
 	/**
 	 * Permet de créer une entrée dans la base de données par rapport à un objet

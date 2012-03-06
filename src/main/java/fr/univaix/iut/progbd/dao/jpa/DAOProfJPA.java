@@ -26,7 +26,7 @@ public class DAOProfJPA implements DAOProf {
 		return null;
 	}
 
-	public Prof getById(int id) {
+	public Prof getById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

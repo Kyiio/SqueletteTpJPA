@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.univaix.iut.progbd.beans.Etudiant;
 
-public interface DAOEtudiant extends DAO<Etudiant>{
+public interface DAOEtudiant extends DAO<Etudiant, Integer>{
 
 	public int computeNbEtudiant();
 
