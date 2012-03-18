@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 import fr.univaix.iut.progbd.dao.DAO;
 
@@ -16,6 +18,7 @@ public class DAOGeneriqueJPA<T, ID> implements DAO<T, ID> {
 
 	protected EntityManager entityManager;
 
+	@SuppressWarnings("unchecked")
 	public DAOGeneriqueJPA(EntityManager entityManager) {
 		this.entityManager = entityManager;
 		this.entityClass = ((Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
@@ -35,32 +38,48 @@ public class DAOGeneriqueJPA<T, ID> implements DAO<T, ID> {
 
 	@Override
 	public boolean delete(T obj) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			EntityTransaction tx = entityManager.getTransaction();
+			tx.begin();
+			entityManager.remove(obj);
+			tx.commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
 	public List<T> FindAll() {
-		// TODO Auto-generated method stub
-		return null;
+        TypedQuery<T> query = entityManager.createQuery("select E from " + entityName + " E where 1 = 1",entityClass);
+        return query.getResultList();
 	}
 
 	@Override
 	public T getById(ID id) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(entityClass, id);
 	}
 
 	@Override
 	public T insert(T obj) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.persist(obj);
+		tx.commit();
+		return obj;
 	}
 
 	@Override
 	public boolean update(T obj) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			EntityTransaction tx = entityManager.getTransaction();
+			tx.begin();
+			entityManager.merge(obj);
+			tx.commit();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 }
